@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบติดตามสภาพแวดล้อมภายในอาคาร :: Real-time Dashboard</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 2400px;
+            min-width: 600px;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .current-data {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+
+        .data-box {
+            width: 200px;
+            padding: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .config-button {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .update-button {
+            background-color: #ffc107;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>ระบบติดตามสภาพแวดล้อมภายในอาคาร</h1>
+
+    <div class="container">
+        <h2>สภาพแวดล้อมปัจจุบัน</h2>
+        <div class="current-data">
+            <div class="data-box" id="temperature-box">
+                <h2>อุณหภูมิ</h2>
+                <p id="temperature">-- °C</p>
+            </div>
+            <div class="data-box" id="humidity-box">
+                <h2>ความชื้น</h2>
+                <p id="humidity">-- %</p>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button class="config-button" onclick="location.href='/config'">ตั้งค่า</button>
+            <button class="update-button" onclick="location.href='/update'">อัพเดท</button>
+        </div>
+    </div>
+
+    <script>
+        function fetchData() {
+            $.getJSON('/data', function (data) {
+                $('#temperature').text(`${data.temperature} °C`);
+                $('#humidity').text(`${data.humidity} %`);
+            });
+        }
+
+        $(document).ready(function () {
+            fetchData();
+            setInterval(fetchData, 60000); // อัพเดทข้อมูลทุก 1 นาที
+        });
+    </script>
+</body>
+
+</html>

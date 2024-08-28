@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>อัพเดทเฟิร์มแวร์</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            color: #00796b;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 500px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00796b;
+        }
+
+        h2 {
+            text-align: center;
+            color: #00796b;
+        }
+
+        h3 {
+            text-align: center;
+            color: #000000;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .box {
+            background-color: #e0f7fa;
+            border: 1px solid #00796b;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input[type="number"],
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #00796b;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"],
+        button {
+            background-color: #00796b;
+            color: #ffffff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        input[type="submit"]:hover,
+        button:hover {
+            background-color: #004d40;
+        }
+
+        /* Media Queries */
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+
+            input[type="number"],
+            input[type="text"],
+            input[type="password"] {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>อัพเดทเฟิร์มแวร์</h1>
+        <form method="POST" action="/updatefirmware" enctype="multipart/form-data">
+            <div class="box">
+                <label for="firmware">เลือกไฟล์เฟิร์มแวร์:</label><br>
+                <input type="file" id="firmware" name="firmware" required><br>
+            </div>
+            <input type="submit" value="อัพเดท">
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตั้งค่าอุปกรณ์</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            color: #00796b;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00796b;
+        }
+
+        h2 {
+            text-align: center;
+            color: #00796b;
+        }
+
+        h3 {
+            text-align: left;
+            color: #000000;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .box {
+            background-color: #e0f7fa;
+            border: 1px solid #00796b;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input[type="number"],
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border: 1px solid #00796b;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"],
+        button {
+            background-color: #00796b;
+            color: #ffffff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 1em;
+        }
+
+        input[type="submit"]:hover,
+        button:hover {
+            background-color: #004d40;
+        }
+
+        /* Media Queries */
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+
+            input[type="number"],
+            input[type="text"],
+            input[type="password"] {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <br><br>
+    <div class="container">
+        <h1></h1>
+        <h2>ตั้งค่าอุปกรณ์</h2>
+        <form action="/save" method="POST">
+            <h3>WiFi</h3>
+            <div class="box">
+                <label for="wifi-ssid">WiFi SSID</label><br>
+                <input type="text" id="wifi-ssid" name="wifi-ssid" value="{ssid}"><br>
+                <label for="wifi-password">Password</label><br>
+                <input type="password" id="wifi-password" name="wifi-password" value="{password}"><br>
+            </div>
+
+            <h3>ThingSpeak</h3>
+            <div class="box">
+                <label for="ts-user">User ID</label><br>
+                <input type="text" id="ts-user" name="ts-user" value="{ts_user}"><br>
+                <label for="ts-password">Password</label><br>
+                <input type="password" id="ts-password" name="ts-password" value="{ts_password}"><br>
+                <label for="ts-client">Client ID</label><br>
+                <input type="text" id="ts-client" name="ts-client" value="{ts_client}"><br>
+                <label for="ts-channel">Channel ID</label><br>
+                <input type="text" id="ts-channel" name="ts-channel" value="{ts_channel}"><br>
+                <label for="ts-write">Write API Key</label><br>
+                <input type="text" id="ts-write" name="ts-write" value="{ts_write}"><br>
+                <label for="ts-read">Read API Key</label><br>
+                <input type="text" id="ts-read" name="ts-read" value="{ts_read}"><br>
+            </div>
+
+            <h3>LINE Notify</h3>
+            <div class="box">
+                <label for="line-token">LINE Notify Token</label><br>
+                <input type="text" id="line-token" name="line-token" value="{line_token}"><br>
+            </div>
+
+            <h3>Access Point</h3>
+            <div class="box">
+                <label for="ap-ssid">Access Point</label><br>
+                <input type="text" id="ap-ssid" name="ap-ssid" value="{ap_ssid}"><br>
+                <label for="ap-password">Password</label><br>
+                <input type="password" id="ap-password" name="ap-password" value="{ap_password}"><br>
+            </div>
+
+            <input type="submit" value="บันทึก">
+        </form>
+
+        <form action="update">
+            <br>
+            <input type="submit" value="อัพเดทเฟิร์มแวร์">
+        </form>
+
+    </div>
+</body>
+
+</html>
